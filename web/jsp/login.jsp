@@ -31,7 +31,7 @@
 
     <script>
         $(function () {
-            $("#submit").submit(function () {
+            $("#submit").click(function () {
                 alert(1);
                 var userName = $("#username").val();
                 var password = $("#password").val();
@@ -41,7 +41,6 @@
                     userName: userName,
                     password: password
                 };
-                alert(url);
                 $post(url, param, function (data) {
                     alert(data);
                     alert(1);
