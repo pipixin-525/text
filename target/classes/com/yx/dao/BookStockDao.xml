@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yx.dao.BookStockDao">
+    <!--查询图书库存信息
+    public BookStock selectBookStockByStockId(@Param("stockId") Integer stockId);-->
+    <select id="selectBookStockByStockId" resultType="com.yx.entities.BookStock">
+        select stock_id, book_id, book_amount
+        from db2.book_stock
+        where stock_id = #{stockId}
+    </select>
+
+
+    <!--更改图书库存
+    public int updateBookAmountByBookStockId(@Param("bookId") Integer bookId, @Param("bookNum") Integer bookNum);-->
+    <update id="updateBookAmountByBookStockId">
+        update db2.book_stock
+        set book_amount = book_amount - #{bookNum}
+        where book_id = #{bookId}
+    </update>
+
+
+    <!--根据图书id查询图书库存数据
+    public int selectBookStockByBookId(@Param("bookId") Integer bookId);-->
+    <select id="selectBookStockByBookId" resultType="int">
+        select book_amount
+        from db2.book_stock
+        where book_id = #{bookId}
+    </select>
+</mapper>
